@@ -8,49 +8,77 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One" rel="stylesheet">
-    <title>GBS</title>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <title>GBS</title>
+  <style>
+  @media (max-width:629px) {
+  img#optionalstuff {
+    display: none;
+  }
+  .card-img-top{
+    display: none;
+  }
+  #map{
+    height: auto;
+    width:auto;
+  }
+}
+@media (min-width:630px){
+  #cinner{
+    height:30rem;
+  }
+  #cinner2{
+    height:25rem;
+  }
+}
+  </style>
 
   </head>
   <body>
     <div class="container-fluid" style="background-color:#a6a6a6;">
-      <table class="table">
-      <tr>
-        <td scope="col">
-      <img src="images\ig1.jpg" class="rounded-circle" style="height:150px; width:150px;" alt="narayan guru">
-      </td>
-      <td scope="col">
-      <center><h1 style="font-family: 'Alfa Slab One', cursive; font-size:50px;">GUJARAT BILLAWARA SANGHA</h1></center>
-      <center><h1 style="font-family: 'Alfa Slab One', cursive; font-size:50px;">ಗುಜರತ್ ಬಿಲ್ವಾ ಸಂಘ</h1></center>
-      </td>
-      <td scope="col">
-      <img src="images\ig2.jpg" class="rounded-circle" style="height:150px; width:150px;" alt="koti chennaya">
-      </td>
-      </tr></table>
+      <div class="row">
+        <div class="col">
+      <img src="images\ig1.jpg" id="optionalstuff" class="img-thumbnail rounded-circle float-left" style="height:100px; width:100px;margin:0.5rem;" alt="narayan guru">
+    </div>
+      <div class="col-auto">
+      <center><h1 style="font-family: 'Alfa Slab One', cursive; font-size:2rem;">GUJARAT BILLAWARA SANGHA</h1></center>
+      <center><h1 style="font-family: 'Alfa Slab One', cursive; font-size:2rem;">ಗುಜರತ್ ಬಿಲ್ವಾ ಸಂಘ</h1></center>
+    </div>
+      <div class="col">
+      <img src="images\ig2.jpg" id="optionalstuff" class="img-thumbnail rounded-circle float-right" style="height:100px; width:100px;margin:0.5rem;" alt="koti chennaya">
+    </div>
+  </div>
+</div>
 
-        <div style="background-color:white;font-family:monospace;font-weight:10;font-size:18px">
-          <ul class="nav nav-tabs nav-fill">
-            <li class="nav-item">
-              <a class="nav-link active" href="#">HOME</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="#">ACTIVITIES</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="#">ABOUT US</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="#">CONTACT</a>
-            </li>
-          </ul>
-      </div>
-      </div>
+<nav class="navbar sticky-top navbar-light bg-light">
+  <a class="navbar-brand" href="#">GBS</a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarText">
+<ul class="navbar-nav mr-auto">
+<li class="nav-item active">
+<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="#">Activities</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="#">About Us</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="#">Contact</a>
+</li>
+</ul>
+</div>
+</nav>
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
       <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
       <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
     </ol>
-    <div class="carousel-inner" style="height:600px;">
+    <div id="cinner" class="carousel-inner">
       <div class="carousel-item active">
         <img src="images\bg4.jpg" class="d-block w-100" alt="...">
       </div>
@@ -72,10 +100,10 @@
   </div>
   <div>
     <div class="jumbotron">
-  <h4 class="display-4">JAI SHRI NARAYAN GURU</h4>
-  <p class="lead">"ONE GOD ONE CASTE AND ONE RELIGION FOR ALL MANKIND." <br> - Shri Narayan Guru</p>
+  <h4 class="display-4" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">JAI SHRI NARAYAN GURU</h4>
+  <p class="lead" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="400">"ONE GOD ONE CASTE AND ONE RELIGION FOR ALL MANKIND." <br> - Shri Narayan Guru</p>
   <div class="row">
-  <div class="col-3">
+  <div class="col-4">
     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
       <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">ABOUT US</a>
       <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">PURPOSE</a>
@@ -83,7 +111,7 @@
       <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">BRANCHES</a>
     </div>
   </div>
-  <div class="col-9">
+  <div class="col-8">
     <div class="tab-content" id="v-pills-tabContent">
       <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
         Gujarat Billawara Sangha was formed in the year 1998 to serve the philosophy of Brahma Shri Narayan Guru i.e, "ONE GOD ONE CASTE AND ONE RELIGION FOR ALL MANKIND." <br><br>
@@ -130,66 +158,69 @@ its own premises, located centrally right opposite to railway station of Baroda.
   </div>
 
 
-  <div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-4">OUR INTERIM COMMITTEE</h1>
-    <p class="lead">Each organizatoin needs pasionate and supportive people for its smooth functioning.</p>
-    <table class="table">
-    <tr>
-      <th scope="col">
-    <div class="card" style="width: 18rem;">
+  <div class="jumbotron jumbotron-fluid" style="padding:3rem;">
+  <div class="container-fluid">
+    <div>
+    <h1 class="display-4"  data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">OUR INTERIM COMMITTEE</h1>
+    <p class="lead" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="400">Each organizatoin needs pasionate and supportive people for its smooth functioning.</p>
+  </div>
+  <div class="row">
+    <div class="col">
+    <div class="card" style="width:15rem;padding:0.5rem;margin:1rem;">
   <img src="images\db.jpg" class="card-img-top" width="200" height="200" alt="...">
   <div class="card-body">
     <h5 class="card-title">Shri Dayanand Bontra</h5>
     <p class="card-text">Founder President</p>
   </div>
-</div></th>
-<th scope="col">
-<div class="card" style="width: 18rem;">
+</div>
+</div>
+<div class="col">
+<div class="card" style="width: 15rem;padding:0.5rem;margin:1rem;">
   <img src="images\mp1.jpg" class="card-img-top" width="200" height="200" alt="...">
   <div class="card-body">
     <h5 class="card-title">Shri Mohan C Poojari</h5>
     <p class="card-text">Founder</p>
   </div>
-</div></th>
-</tr>
-<tr>
-  <th scope="col">
-<div class="card" style="width: 18rem;">
+</div>
+</div>
+  <div class="col">
+<div class="card" style="width: 15rem;padding:0.5rem;margin:1rem;">
   <img src="images\bb.jpg" class="card-img-top" width="200" height="200" alt="...">
   <div class="card-body">
     <h5 class="card-title">Shri Bhaktavatsala R Bontra</h5>
     <p class="card-text">Honorable President</p>
-  </div></div></th>
-  <th scope="col">
-  <div class="card" style="width: 18rem;">
+  </div>
+</div>
+</div>
+  <div class="col">
+  <div class="card" style="width: 15rem;padding:0.5rem;margin:1rem;">
   <img src="images\sk.jpg" class="card-img-top" width="200" height="200" alt="...">
   <div class="card-body">
     <h5 class="card-title">Shri S.K. Haleangadi</h5>
     <p class="card-text">Cheif Correspondent</p>
   </div>
-</div></th>
-</tr>
-</table>
+</div></div>
+</div>
+</div>
 </div>
   </div>
 </div>
 
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h1 class="display-4">BAIDYASHREE CULTURAL CENTER</h1>
-    <p class="lead">The Gujarat Billawara sangha has establish the BAIDYASHREE CULTURAL CENTER,
+    <h1 class="display-4" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">BAIDYASHREE CULTURAL CENTER</h1>
+    <p class="lead" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="400">The Gujarat Billawara sangha has establish the BAIDYASHREE CULTURAL CENTER,
     its own premises, located centrally right opposite to railway station of Baroda. This acts as the main center for all activities of the sangha.</p>
 
-    <div id="carouselExampleFade" class="carousel slide carousel-fade"  data-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active" style="height:400px">
+    <div id="carouselExampleFade" class="carousel slide carousel-fade"  data-ride="carousel" data-aos="zoom-in" data-aos-duration="2000" data-aos-delay="400">
+  <div id="cinner2" class="carousel-inner">
+    <div class="carousel-item active">
       <img src="images\bg6.jpg" class="d-block w-100" alt="...">
     </div>
-    <div class="carousel-item" style="height:400px">
+    <div class="carousel-item">
       <img src="images\bg8.jpg" class="d-block w-100" alt="...">
     </div>
-    <div class="carousel-item" style="height:400px">
+    <div class="carousel-item">
       <img src="images\bg9.jpg" class="d-block w-100" alt="...">
     </div>
   </div>
@@ -252,27 +283,25 @@ its own premises, located centrally right opposite to railway station of Baroda.
 </div>
 
 
-<div style="background-color:black;">
-  <table class="table table-dark">
-      <tr>
-        <th scope="col">
-          <div style="padding:30px;margin-right:-115px">
+<div class="container-fluid" style="background-color:black;">
+  <div class="row">
+      <div class="col">
+          <div style="margin-top:3rem;margin-bottom:3rem;">
             <h4 style="color:#1a75ff;">DIRECTIONS : <br></br></h4>
-      <iframe width="500" height="300" src="https://maps.google.com/maps?q=BAIDASHREE%20CULTURAL%20CENTRE%2C%20GUJARAT%20BILLAVARA%20SANGHA&t=&z=13&ie=UTF8&iwloc=&output=embed"  frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+      <iframe id="map" width="500" height="300" src="https://maps.google.com/maps?q=BAIDASHREE%20CULTURAL%20CENTRE%2C%20GUJARAT%20BILLAVARA%20SANGHA&t=&z=13&ie=UTF8&iwloc=&output=embed"  frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
           </div>
-        </th>
-        <th scope="col">
-          <div style="margin-top:30px;">
+        </div>
+        <div class="col">
+          <div style="margin-top:3rem;">
             <h4 style="color:#1a75ff;">REACH US : <br></br></h4>
-          <p>Baidashree Cultural Centre of Gujarat Billawara Sangh,<br>Siddi Vinayaka Complex,<br>opposite Alkapuri railway station, <br> Alkapuri, Vadodara-390020</p>
+          <p style="color:white;">Baidashree Cultural Centre of Gujarat Billawara Sangh,<br>Siddi Vinayaka Complex,<br>opposite Alkapuri railway station, <br> Alkapuri, Vadodara-390020</p>
           <br></br>
           <h4 style="color:#1a75ff;">CONTACT US : </h4>
-          <p>Telephone  :  0265-*******</p>
-          <p>Email : <a href="xyz@gmail.com" data-slimstat="5">xyz@gmail.com</a></p>
+          <p style="color:white;">Telephone  :  0265-*******</p>
+          <p style="color:white;">Email : <a href="xyz@gmail.com" data-slimstat="5">xyz@gmail.com</a></p>
           </div>
-        </th>
-      </tr>
-      </table>
+        </div>
+      </div>
   </div>
   <div style="color: #777;background-color:white;text-align:center;padding:30px 80px;text-align: justify;">
   <p style="text-align:center;">Copyright © 2019 GUJARAT BILLAVA SANGHA  </p>
@@ -284,5 +313,9 @@ its own premises, located centrally right opposite to railway station of Baroda.
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+    AOS.init();
+    </script>
   </body>
 </html>

@@ -1,0 +1,87 @@
+<html>
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+
+<script>
+
+</script>
+</head>
+<body>
+  <nav class="navbar sticky-top navbar-light bg-light">
+    <div class="navbar-text">
+      <a class="nav-item" style="margin:1rem;" href="index.html">Home <span class="sr-only">(current)</span></a>
+    </div>
+  </nav>
+  <div class="jumbotron jumbotron-fluid container-fluid" style="padding:3rem;background-color:#002966;color:white;" >
+    <h1 class="display-3"  data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">OUR TEAM</h1>
+    <p class="lead" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="400">Each organizatoin needs pasionate and supportive people for its smooth functioning.</br>Meet our team.</p>
+    <h4 class="display-4"  data-aos="fade-left" data-aos-duration="1000" data-aos-delay="500">Our Core Commitee</h4>
+    <div class="row" id="outsect1">
+        </div>
+        <h4 class="display-4"  data-aos="fade-left" data-aos-duration="1000" data-aos-delay="500">Our Members</h4>
+        <div class="row" id="outsect0">
+          </div>
+  </div>
+  <script>
+  var data;
+  $.getJSON('https://script.google.com/macros/s/AKfycbwzCDcHCuod7YWFIprcNZ1TMkeb-Lh7GtJz-pUai00OI1jgVEA/exec', function(dat) {
+
+      window.data=dat;
+      console.log(data);
+
+
+
+  //https://script.google.com/macros/s/AKfycbwzCDcHCuod7YWFIprcNZ1TMkeb-Lh7GtJz-pUai00OI1jgVEA/exec sheet to json
+
+var n=0;
+var part=document.getElementById("outsect0");
+var partc=document.getElementById("outsect1");
+function section(j){
+var part0=document.createElement("div");
+part0.className="col"
+var part1=document.createElement("div");
+part1.className="card";
+part1.style="width: 15rem;padding:0.5rem;margin:1rem;color:#002966;"
+var part2=document.createElement("div");
+part2.className="card-body";
+var part3=document.createElement("h5");
+part3.className="card-title";
+part3.innerHTML=data.person[j].name;
+var part4=document.createElement("p");
+part4.className="card-text";
+part4.innerHTML=data.person[j].location+ '&emsp;'+data.person[j].contact;
+var part5=document.createElement("h6");
+part5.className="card-text";
+part5.innerHTML=data.person[j].post;
+part2.appendChild(part3);
+part2.appendChild(part5);
+part2.appendChild(part4);
+part1.appendChild(part2);
+part0.appendChild(part1);
+if(data.person[j].tag=="member")
+{
+part.appendChild(part0);
+}
+else if(data.person[j].tag=="com"){
+  partc.appendChild(part0);
+}
+}
+for(i in data.person){
+  section(n);
+  n++;
+}
+});
+
+
+  </script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+  AOS.init();
+  </script>
+</body>
+</html>

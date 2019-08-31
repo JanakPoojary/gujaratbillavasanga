@@ -51,7 +51,7 @@ part3.className="card-title";
 part3.innerHTML=data.person[j].name;
 var part4=document.createElement("p");
 part4.className="card-text";
-part4.innerHTML=data.person[j].location+ '&emsp;'+data.person[j].contact;
+part4.innerHTML=data.person[j].location+ '&emsp;'+'<a href="data.person[j].contact">'+data.person[j].contact;+'</a>'
 var part5=document.createElement("h6");
 part5.className="card-text";
 part5.innerHTML=data.person[j].post;

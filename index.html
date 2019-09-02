@@ -299,6 +299,7 @@
               var data;
               data = dat;
               console.log(data);
+              var n=data.event.length;
               var head = document.getElementById("main");
               var part0 = document.createElement("h1");
               part0.className = "lead";
@@ -310,9 +311,9 @@
               link.innerHTML="Click here for more images";
               link.target="_blank";
               link.style="color:white;"
-              link.href=data.event[0].flink;
-              part0.innerHTML = data.event[0].name;
-              part1.innerHTML = data.event[0].description;
+              link.href=data.event[n-1].flink;
+              part0.innerHTML = data.event[n-1].name;
+              part1.innerHTML = data.event[n-1].description;
               part3.appendChild(part0);
               part3.appendChild(part1);
               part2.appendChild(link);
@@ -399,6 +400,7 @@
   <div style="color: #777;background-color:white;text-align:center;padding:30px 80px;text-align: justify;">
     <p style="text-align:center;">Copyright © 2019 GUJARAT BILLAVARA SANGHA </p>
     <p style="text-align:center;">All rights reserved. </p>
+    <p style="text-align:center;font-size:0.7rem;">Developed by Janakaraj Poojary</p>
   </div>
 
   <!-- Optional JavaScript -->

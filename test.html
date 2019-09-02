@@ -1,91 +1,86 @@
-<!DOCTYPE html>
 <html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <style>
-      * {
-        box-sizing: border-box;
-      }
 
-      #myInput {
-        width: 100%;
-        font-size: 16px;
-        padding: 12px 20px 12px 40px;
-        border: 1px solid #ddd;
-        margin-bottom: 12px;
-      }
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+</head>
 
-      #myUL {
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
-      }
+<body>
 
-      #myUL li a {
-        border: 1px solid #ddd;
-        margin-top: -1px; /* Prevent double borders */
-        background-color: #f6f6f6;
-        padding: 12px;
-        text-decoration: none;
-        font-size: 18px;
-        color: black;
-        display: block;
-      }
+  <div class="jumbotron" id="main">
+    <h1 class="display-4" id="head">Recent Activities</h1>
+  <script>
+    $.get('https://script.google.com/macros/s/AKfycby4KVckNrqk82Bc3t-5DdzvwlMCqwtOwVsdhVsWwJqFV5CmUzeV/exec', function(dat) {
+      var data;
+      data = dat;
+      console.log(data);
+      var n = data.event.length;
+      var head = document.getElementById("main");
+      var part0 = document.createElement("h1");
+      part0.className = "lead"
+      var part1 = document.createElement("p");
+      part0.innerHTML = data.event[n - 1].name;
+      part1.innerHTML = data.event[n - 1].description;
+      head.appendChild(part0);
+      head.appendChild(part1);
+    });
+  </script>
+  <br><br>
+  <div class="container gallery-container">
+    <div class="tz-gallery">
+      <div class="row mb-3">
+        <div class="col-md-4">
+          <div class="card">
+            <a class="lightbox" href="images/bg5.jpg">
+              <img src="images/bg5.jpg" alt="Parkr" class="card-img-top" data-aos="fade-top" data-aos-duration="1000" data-aos-delay="200">
+            </a>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <a class="lightbox" href="images/bg4.jpg">
+              <img src="images/bg4.jpg" alt="Park" class="card-img-top" data-aos="fade-top" data-aos-duration="1000" data-aos-delay="400">
+            </a>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <a class="lightbox" href="images/bg3.jpg">
+              <img src="images/bg3.jpg" alt="Park" class="card-img-top" data-aos="fade-top" data-aos-duration="1000" data-aos-delay="600">
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card">
+            <a class="lightbox" href="images/bg2.jpg">
+              <img src="images/bg2.jpg" alt="Park" class="card-img-top" data-aos="fade-top" data-aos-duration="1000" data-aos-delay="200">
+            </a>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <a class="lightbox" href="images/bg1.jpg">
+              <img src="images/bg1.jpg" alt="Park" class="card-img-top" data-aos="fade-top" data-aos-duration="1000" data-aos-delay="400">
+            </a>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <a class="lightbox" href="images/bg6.jpg">
+              <img src="images/bg6.jpg" alt="Park" class="card-img-top" data-aos="fade-top" data-aos-duration="1000" data-aos-delay="600">
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-      #myUL li a:hover:not(.header) {
-        background-color: #eee;
-      }
-    </style>
-  </head>
-  <body>
-    <h2>My Phonebook</h2>
+</body>
 
-    <input
-      type="text"
-      id="myInput"
-      onkeyup="myFunction()"
-      placeholder="Search for names.."
-      title="Type in a name"
-    />
-
-    <div id="myUL"></div>
-
-    <script>
-      const data = [
-        { name: "shivam", img: "img1", mobile: "584" },
-        { name: "patel", img: "img1", mobile: "584" },
-        { name: "shubham", img: "img1", mobile: "584" },
-        { name: "parimal", img: "img1", mobile: "584" }
-      ];
-      function myFunction() {
-        var input,
-          filter,
-          a,
-          i,
-          txtValue,
-          text = "";
-        input = document.getElementById("myInput");
-
-        var mYdiv = document.getElementById("myUL");
-        input.addEventListener("input", logKey);
-
-        function logKey() {
-          filter = input.value.toUpperCase();
-          for (i = 0; i < data.length; i++) {
-            a = data[i].name;
-
-            console.log(a.toUpperCase().indexOf(filter));
-
-            if (a.toUpperCase().indexOf(filter) > -1) {
-              text += `<h1> ${data[i].name}</h1>`;
-            } else {
-              mYdiv.innerHTML = `<h1>no</h1>`;
-            }
-
-            mYdiv.innerHTML = text;
-          }
-        }
-      }
-    </script>
-  </body>
 </html>

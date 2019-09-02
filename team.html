@@ -4,6 +4,16 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    #myInput {
+      border: 1px solid #ddd;
+      width:20rem;
+    }
+  </style>
 </head>
 
 <body>
@@ -12,22 +22,40 @@
       <a class="nav-item" style="margin:1rem;" href="index.html">Home <span class="sr-only">(current)</span></a>
       <a class="nav-item" style="margin:1rem;" href="#core">Core Committee</a>
       <a class="nav-item" style="margin:1rem;" href="#members">Members</a>
+      <a class="nav-item" style="margin:1rem;" href="#members">Mahila Mandal</a>
+      <input
+        type="text"
+        id="myInput"
+        onkeyup="myFunction()"
+        placeholder="  Search for names.."
+        title="Type in a name"
+      />
+
     </div>
   </nav>
   <div class="jumbotron jumbotron-fluid container-fluid" style="padding:3rem;background-color:#002966;color:white;">
     <h1 class="display-3" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">OUR TEAM</h1>
-    <section id="core">
+
       <p class="lead" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="400">Each organizatoin needs pasionate and supportive people for its smooth functioning.</br>Meet our team.</p>
+      <div id='search'></div>
+      <div id="outsect">
+        <section id="core">
       <h4 class="display-4" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="500">Our Core Commitee</h4>
       <div class="row" id="outsect1">
       </div>
     </section>
     <section id="members">
-      <h4 class="display-4" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="500">Our Members</h4>
+      <h4 class="display-4" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="500"></br>Our Members</h4>
       <div class="row" id="outsect0">
       </div>
     </section>
+    <section id="ms">
+      <h4 class="display-4" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="500"></br>Our Mahila Mandal</h4>
+      <div class="row" id="outsect2">
+      </div>
+    </section>
   </div>
+</div>
   <script>
     var data;
     $.getJSON('https://script.google.com/macros/s/AKfycbwzCDcHCuod7YWFIprcNZ1TMkeb-Lh7GtJz-pUai00OI1jgVEA/exec', function(dat) {
@@ -39,6 +67,7 @@
       var n = 0;
       var part = document.getElementById("outsect0");
       var partc = document.getElementById("outsect1");
+      var partm = document.getElementById("outsect2");
 
       function section(j) {
         var part0 = document.createElement("div");
@@ -66,6 +95,8 @@
           part.appendChild(part0);
         } else if (data.person[j].tag == "com") {
           partc.appendChild(part0);
+        } else if (data.person[j].tag == "ms") {
+          partm.appendChild(part0);
         }
       }
       for (i in data.person) {
@@ -73,6 +104,43 @@
         n++;
       }
     });
+    function myFunction() {
+      var input,
+        filter,
+        a,
+        i,
+        txtValue,
+        text = "";
+      input = document.getElementById("myInput");
+
+      var mYdiv = document.getElementById("search");
+      input.addEventListener("input", logKey);
+
+      function logKey() {
+        filter = input.value.toUpperCase();
+        for (i = 0; i < data.person.length; i++) {
+          a = data.person[i].name;
+
+          console.log(a.toUpperCase().indexOf(filter));
+
+          if (a.toUpperCase().indexOf(filter) > -1) {
+            text+=`<div class="col"><div class="card" style="width: 15rem; padding: 0.5rem; margin: 1rem; color: rgb(0, 41, 102);"><div class="card-body"><h5 class="card-title"> ${data.person[i].name} </h5><h6 class="card-text"> ${data.person[i].post} </h6><p class="card-text"> ${data.person[i].location}&emsp;${data.person[i].contact}</p></div></div></div>`
+          } else {
+            mYdiv.innerHTML = `<h1>no</h1>`;
+          }
+          if(filter!=""){
+          mYdiv.innerHTML = text;
+        }
+        }
+        if(filter.length==0){
+        clear();
+      }
+      }
+      function clear(){
+        mYdiv.innerHTML='<p></p>'
+      }
+    }
+
   </script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

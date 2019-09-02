@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      #myInput {
+        width: 100%;
+        font-size: 16px;
+        padding: 12px 20px 12px 40px;
+        border: 1px solid #ddd;
+        margin-bottom: 12px;
+      }
+
+      #myUL {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      #myUL li a {
+        border: 1px solid #ddd;
+        margin-top: -1px; /* Prevent double borders */
+        background-color: #f6f6f6;
+        padding: 12px;
+        text-decoration: none;
+        font-size: 18px;
+        color: black;
+        display: block;
+      }
+
+      #myUL li a:hover:not(.header) {
+        background-color: #eee;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>My Phonebook</h2>
+
+    <input
+      type="text"
+      id="myInput"
+      onkeyup="myFunction()"
+      placeholder="Search for names.."
+      title="Type in a name"
+    />
+
+    <div id="myUL"></div>
+
+    <script>
+      const data = [
+        { name: "shivam", img: "img1", mobile: "584" },
+        { name: "patel", img: "img1", mobile: "584" },
+        { name: "shubham", img: "img1", mobile: "584" },
+        { name: "parimal", img: "img1", mobile: "584" }
+      ];
+      function myFunction() {
+        var input,
+          filter,
+          a,
+          i,
+          txtValue,
+          text = "";
+        input = document.getElementById("myInput");
+
+        var mYdiv = document.getElementById("myUL");
+        input.addEventListener("input", logKey);
+
+        function logKey() {
+          filter = input.value.toUpperCase();
+          for (i = 0; i < data.length; i++) {
+            a = data[i].name;
+
+            console.log(a.toUpperCase().indexOf(filter));
+
+            if (a.toUpperCase().indexOf(filter) > -1) {
+              text += `<h1> ${data[i].name}</h1>`;
+            } else {
+              mYdiv.innerHTML = `<h1>no</h1>`;
+            }
+
+            mYdiv.innerHTML = text;
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -15,7 +15,7 @@
 
     #myInput {
       border: 1px solid #ddd;
-      width:20rem;
+      width: 20rem;
     }
   </style>
 </head>
@@ -27,39 +27,49 @@
       <a class="nav-item" style="margin:1rem;" href="#core">Core Committee</a>
       <a class="nav-item" style="margin:1rem;" href="#members">Members</a>
       <a class="nav-item" style="margin:1rem;" href="#ms">Mahila Mandal</a>
-      <input
-        type="text"
-        id="myInput"
-        onkeyup="myFunction()"
-        placeholder="  Search for names.."
-        title="Type in a name"
-      />
+      <input type="text" id="myInput" onkeyup="myFunction()" placeholder="  Search for names.." title="Type in a name" />
 
     </div>
   </nav>
   <div class="jumbotron jumbotron-fluid container-fluid" style="padding:3rem;background-color:#002966;color:white;">
     <h1 class="display-3" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">OUR TEAM</h1>
 
-      <p class="lead" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="400">Each organizatoin needs pasionate and supportive people for its smooth functioning.</br>Meet our team.</p>
-      <div id='search'></div>
-      <div id="outsect">
-        <section id="core">
-      <h4 class="display-4" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="500">Our Core Commitee</h4>
-      <div class="row" id="outsect1">
-      </div>
-    </section>
-    <section id="members">
-      <h4 class="display-4" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="500"></br>Our Members</h4>
-      <div class="row" id="outsect0">
-      </div>
-    </section>
-    <section id="ms">
-      <h4 class="display-4" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="500"></br>Our Mahila Mandal</h4>
-      <div class="row" id="outsect2">
-      </div>
-    </section>
+    <p class="lead" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="400">Each organizatoin needs pasionate and supportive people for its smooth functioning.</br>Meet our team.</p>
+    <div id='search'></div>
+    <div id="outsect">
+      <section id="core">
+        <br><h4 class="display-4" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="500">Our Core Commitee</h4>
+        <div class="row" id="outsect1">
+        </div>
+        <br><h4 class="display-4" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="500">Advisors</h4>
+        <div class="row" id="outsectadv">
+        </div>
+        <br><h4 class="display-4" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="500">Secretary</h4>
+        <div class="row" id="outsectsec">
+        </div>
+        <br><h4 class="display-4" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="500">Treasurers</h4>
+        <div class="row" id="outsecttre">
+        </div>
+        <br><h4 class="display-4" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="500">Conveners</h4>
+        <div class="row" id="outsectcon">
+        </div>
+        <br><h4 class="display-4" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="500">Commitee Members</h4>
+        <div class="row" id="outsectcm">
+        </div>
+      </section>
+      <section id="ms">
+        <h4 class="display-4" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="500"></br>Our Mahila Mandal</h4>
+        <div class="row" id="outsect2">
+        </div>
+      </section>
+      <section id="members">
+        <br><h4 class="display-4" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="500"></br>Our Members</h4>
+        <div class="row" id="outsect0">
+        </div>
+      </section>
+
+    </div>
   </div>
-</div>
   <script>
     var data;
     $.getJSON('https://script.google.com/macros/s/AKfycbwzCDcHCuod7YWFIprcNZ1TMkeb-Lh7GtJz-pUai00OI1jgVEA/exec', function(dat) {
@@ -72,6 +82,11 @@
       var part = document.getElementById("outsect0");
       var partc = document.getElementById("outsect1");
       var partm = document.getElementById("outsect2");
+      var parts = document.getElementById("outsectsec");
+      var partt = document.getElementById("outsecttre");
+      var partcon = document.getElementById("outsectcon");
+      var parta = document.getElementById("outsectadv");
+      var partcm = document.getElementById("outsectcm");
 
       function section(j) {
         var part0 = document.createElement("div");
@@ -97,10 +112,21 @@
         part0.appendChild(part1);
         if (data.person[j].tag == "member") {
           part.appendChild(part0);
-        } else if (data.person[j].tag == "com") {
+        } else if (data.person[j].tag == "comm") {
           partc.appendChild(part0);
         } else if (data.person[j].tag == "ms") {
           partm.appendChild(part0);
+        } else if (data.person[j].tag == "coms") {
+          parts.appendChild(part0);
+        } else if (data.person[j].tag == "comt") {
+          partt.appendChild(part0);
+        } else if (data.person[j].tag == "comc") {
+          partcon.appendChild(part0);
+        } else if (data.person[j].tag == "coma") {
+          parta.appendChild(part0);
+        }
+        else if (data.person[j].tag == "com") {
+          partcm.appendChild(part0);
         }
       }
       for (i in data.person) {
@@ -108,6 +134,7 @@
         n++;
       }
     });
+
     function myFunction() {
       var input,
         filter,
@@ -128,23 +155,24 @@
           console.log(a.toUpperCase().indexOf(filter));
 
           if (a.toUpperCase().indexOf(filter) > -1) {
-            text+=`<div class="col"><div class="card" style="width: 15rem; padding: 0.5rem; margin: 1rem; color: rgb(0, 41, 102);"><div class="card-body"><h5 class="card-title"> ${data.person[i].name} </h5><h6 class="card-text"> ${data.person[i].post} </h6><p class="card-text"> ${data.person[i].location}&emsp;${data.person[i].contact}</p></div></div></div>`
+            text +=
+              `<div class="col"><div class="card" style="width: 15rem; padding: 0.5rem; margin: 1rem; color: rgb(0, 41, 102);"><div class="card-body"><h5 class="card-title"> ${data.person[i].name} </h5><h6 class="card-text"> ${data.person[i].post} </h6><p class="card-text"> ${data.person[i].location}&emsp;${data.person[i].contact}</p></div></div></div>`
           } else {
             mYdiv.innerHTML = `<h1>no</h1>`;
           }
-          if(filter!=""){
-          mYdiv.innerHTML = text;
+          if (filter != "") {
+            mYdiv.innerHTML = text;
+          }
         }
+        if (filter.length == 0) {
+          clear();
         }
-        if(filter.length==0){
-        clear();
       }
-      }
-      function clear(){
-        mYdiv.innerHTML='<p></p>'
+
+      function clear() {
+        mYdiv.innerHTML = '<p></p>'
       }
     }
-
   </script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
